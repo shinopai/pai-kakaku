@@ -1,0 +1,65 @@
+@import "_basic";
+@import "_mixin";
+
+/* home */
+.home {
+  &-list {
+    margin-top: 30px;
+    &__item {
+      width: 25%;
+      column-gap: 15px;
+      border: 1px solid #ddd;
+      align-items: center;
+      padding-left: 5px;
+      &-ico {
+        width: 38px;
+        height: 38px;
+      }
+      &-txt {
+        @include fs-14;
+        font-weight: 700;
+      }
+    }
+  }
+  &-links {
+    margin-top: 25px;
+    @include fs-13;
+    justify-content: center;
+    column-gap: 25px;
+    &__item {
+      position: relative;
+      &:not(:last-child) {
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 1px;
+          height: 20px;
+          background-color: #ddd;
+          position: absolute;
+          right: -15px;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+/* maker list page */
+.maker {
+  &-list {
+    margin-top: 30px;
+    @include fs-13;
+    gap: 20px;
+    &__item {
+      position: relative;
+      padding-left: 20px;
+      &::before {
+        content: "▶";
+        color: #00d;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<%= render partial: 'shared/page_title', locals: { page_title: 'メーカー一覧' } %>
+
+<h2 class="basic-heading-blue">メーカー一覧</h2>
+
+<ul class="maker-list flex">
+  <% @makers.each do |maker| %>
+  <li class="maker-list__item">
+    <%= link_to maker.name, all_items_by_maker_path(maker) %>
+  </li>
+  <% end %>
+</ul>

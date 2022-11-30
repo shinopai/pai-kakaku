@@ -1,0 +1,38 @@
+<%= render partial: 'shared/page_title', locals: { page_title: '新規登録' } %>
+
+<h2 class="basic-heading">価格.comの登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'auth-form' }) do |new_user| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<table class="auth-form__table">
+  <tbody>
+    <tr>
+      <th>ユーザー名</th>
+      <td>
+        <%= new_user.text_field :name, autofocus: true, autocomplete: "name", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <%= new_user.email_field :email, autofocus: true, autocomplete: "email", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td>
+        <%= new_user.password_field :password, autofocus: true, autocomplete: "password", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+    <tr>
+      <th>パスワード(確認)</th>
+      <td>
+        <%= new_user.password_field :password_confirmation, autocomplete: "new-password", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= new_user.submit "登録する", class: 'auth-form__table-input--submit' %>
+<%= render "devise/shared/links" %>
+<% end %>

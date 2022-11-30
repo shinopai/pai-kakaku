@@ -1,0 +1,49 @@
+<%= render partial: 'shared/page_title', locals: { page_title: '' } %>
+
+<!-- flash message -->
+<% if flash[:notice] %>
+<p class="notice-msg"><%= notice %></p>
+<% end %>
+<% if flash[:alert] %>
+<p class="alert-msg"><%= alert %></p>
+<% end %>
+
+<form action="" method="get" class="search-form flex">
+  <input type="search" name="" id="" class="search-form__input--search" placeholder="何をお探しですか？（メーカー、製品カテゴリ、製品名）">
+  <input type="submit" value="検索" class="search-form__input--submit">
+</form>
+
+<ul class="home-list flex">
+  <% @categories.each do |category| %>
+  <%= link_to all_items_by_category_path(category), class: 'contents' do %>
+  <li class="home-list__item flex">
+    <%= image_tag 'ico_category.jpg', class: 'home-list__item-ico' %>
+    <p class="home-list__item-txt"><%= category.name %></p>
+  </li>
+  <% end %>
+  <% end %>
+</ul>
+
+<ul class="home-links flex">
+  <li class="home-links__item">
+    <%= link_to 'メッセージ', '#' %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to '掲載情報について', '#' %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to '利用規約', '#' %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to '個人情報保護方針', '#' %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to 'サイトマップ', '#' %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to 'メーカー一覧', makers_path %>
+  </li>
+  <li class="home-links__item">
+    <%= link_to 'お問い合わせ', '#' %>
+  </li>
+</ul>

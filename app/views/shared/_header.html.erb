@@ -1,0 +1,28 @@
+<header class="header flex">
+  <%= link_to root_path, class: 'contents' do %>
+  <h1 class="header__logo">
+    <% if check_controller %>
+    <%= image_tag 'logo_home.png' %>
+    <% else %>
+    <%= image_tag 'logo_home_sub.gif' %>
+    <% end %>
+  </h1>
+  <% end %>
+  <ul class="header__menu flex">
+    <% if user_signed_in? %>
+    <li class="user">
+      <%= link_to current_user.name + 'さん', '#' %>
+    </li>
+    <li class="logout">
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    </li>
+    <% else %>
+    <li class="login">
+      <%= link_to 'ログイン', new_user_session_path %>
+    </li>
+    <li class="register">
+      <%= link_to '新規登録', new_user_registration_path %>
+    </li>
+    <% end %>
+  </ul>
+</header>

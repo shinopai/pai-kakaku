@@ -1,0 +1,38 @@
+<%= render partial: 'shared/page_title', locals: { page_title: '新規登録' } %>
+
+<h2 class="basic-heading">ログイン</h2>
+
+<!-- flash message -->
+<% if flash[:alert] %>
+<p class="alert-msg"><%= alert %></p>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'auth-form' }) do |user| %>
+
+<table class="auth-form__table">
+  <tbody>
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <%= user.email_field :email, autofocus: true, autocomplete: "email", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td>
+        <%= user.password_field :password, autofocus: true, autocomplete: "password", class: 'auth-form__table-input' %>
+      </td>
+    </tr>
+    <% if devise_mapping.rememberable? %>
+    <tr>
+      <th>
+        <%= user.check_box :remember_me %>
+        <%= user.label :remember_me, class: 'auth-form__table-label' %>
+      </th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= user.submit "ログイン", class: 'auth-form__table-input--submit' %>
+<%= render "devise/shared/links" %>
+<% end %>
