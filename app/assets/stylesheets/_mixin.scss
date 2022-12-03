@@ -6,6 +6,11 @@
   }
 }
 
+/* font size 11 */
+@mixin fs-11 {
+  font-size: clamp(0.9rem, 0.806rem + 0.47vw, 1.1rem);
+}
+
 /* font size 12 */
 @mixin fs-12 {
   font-size: clamp(1rem, 0.906rem + 0.47vw, 1.2rem);
@@ -29,4 +34,9 @@
 /* font size 18px */
 @mixin fs-18 {
   font-size: clamp(1.6rem, 1.506rem + 0.47vw, 1.8rem);
+}
+
+/* font size 20px */
+@mixin fs-20 {
+  font-size: clamp(1.8rem, 1.706rem + 0.47vw, 2rem);
 }

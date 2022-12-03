@@ -21,12 +21,31 @@
 # )
 # end
 
-3000.times do
-Item.create!(
-  name: Faker::FunnyName.two_word_name,
-  description: Faker::Quote.famous_last_words,
-  release_date: Faker::Date.between(from: '2010-01-01', to: '2022-01-01'),
-  category_id: rand(1..Category.count),
-  maker_id: rand(1..Maker.count)
+# 3000.times do
+# Item.create!(
+#   name: Faker::FunnyName.two_word_name,
+#   description: Faker::Quote.famous_last_words,
+#   release_date: Faker::Date.between(from: '2010-01-01', to: '2022-01-01'),
+#   category_id: rand(1..Category.count),
+#   maker_id: rand(1..Maker.count)
+# )
+# end
+
+# 300.times do
+# Shop.create!(
+#   name: Faker::FunnyName.two_word_name,
+#   address: Faker::Address.full_address,
+#   tel: Faker::PhoneNumber.cell_phone,
+#   comment: Faker::Quote.famous_last_words,
+#   postage: rand(0..1),
+#   indication: rand(0..1)
+# )
+# end
+
+5000.times do
+Sale.create!(
+  price: Faker::Number.between(from: 300, to: 9999999),
+  shop_id: rand(1..Shop.count),
+  item_id: rand(1..Item.count)
 )
 end

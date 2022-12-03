@@ -2,6 +2,49 @@
 
 <h2 class="basic-heading-light-blue"><%= @item.name %></h2>
 
+<!-- 商品詳細 -->
 <div class="item-detail">
-
+  <div class="item-detail__upper flex">
+    <p class="item-detail__upper-before">
+      <span>メーカー</span>&nbsp;<%= link_to @item.maker.name, all_items_by_maker_path(@item.maker), class: 'contents' %>
+    </p>
+    <p class="item-detail__upper-after">
+      <%= @item.release_date.strftime('%Y年%m月%d日') %>&nbsp;発売
+    </p>
+  </div>
+  <h3 class="item-detail__title"><%= @item.name %></h3>
+  <%= button_to like_item_path(@item), form_class: 'item-detail__form' do %>
+  <%= image_tag 'ico_like.png', class: 'item-detail__form-ico', title: '商品をお気に入りに登録する' %>
+  <% end %>
+  <span class="item-detail__txt">お気に入り登録(0人)</span>
 </div>
+
+<!-- 店舗一覧 -->
+<% if @shops.any? %>
+<table class="item-shop">
+  <caption class="item-shop__title"><%= @item.name %><span>(取扱店舗数:<%= @item.sales.size %>店舗)</span></caption>
+  <thead>
+    <tr>
+      <th>価格（差額）</th>
+      <th>送料</th>
+      <th>在庫</th>
+      <th>ショップ情報</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shops.each do |shop| %>
+    <tr>
+      <td class="price"><%= number_to_currency(shop.price) %></td>
+      <td><%= shop.shop.postage %></td>
+      <td><%= shop.shop.indication %></td>
+      <td>
+        <h3><%= shop.shop.name %></h3>
+        <p><%= shop.shop.comment %></p>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p class="item-shop__txt">取扱店舗はありません</p>
+<% end %>

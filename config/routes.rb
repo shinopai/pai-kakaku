@@ -31,4 +31,7 @@ Rails.application.routes.draw do
 
   # item detail
   get '/items/:id', to: 'items#show', as: :show_item
+
+  # like item
+  post '/items/:id/like', to: 'items#like_item', as: :like_item
 end
