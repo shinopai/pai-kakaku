@@ -1,17 +1,12 @@
 <%= render partial: 'shared/page_title', locals: { page_title: '' } %>
 
 <!-- flash message -->
-<% if flash[:notice] %>
-<p class="notice-msg"><%= notice %></p>
-<% end %>
-<% if flash[:alert] %>
-<p class="alert-msg"><%= alert %></p>
-<% end %>
+<%= render 'shared/flash_message' %>
 
-<form action="" method="get" class="search-form flex">
-  <input type="search" name="" id="" class="search-form__input--search" placeholder="何をお探しですか？（メーカー、製品カテゴリ、製品名）">
-  <input type="submit" value="検索" class="search-form__input--submit">
-</form>
+<%= search_form_for @q, url: search_path, method: :get, class: 'search-form flex' do |search| %>
+<%= search.search_field :name_or_description_gt, class: 'search-form__input--search', placeholder: '何をお探しですか？（製品名、説明）' %>
+<%= search.submit '検索', class: 'search-form__input--submit' %>
+<% end %>
 
 <ul class="home-list flex">
   <% @categories.each do |category| %>

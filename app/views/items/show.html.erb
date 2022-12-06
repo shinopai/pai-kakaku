@@ -2,6 +2,9 @@
 
 <h2 class="basic-heading-light-blue"><%= @item.name %></h2>
 
+<!-- flash message -->
+<%= render 'shared/flash_message' %>
+
 <!-- 商品詳細 -->
 <div class="item-detail">
   <div class="item-detail__upper flex">
@@ -13,10 +16,19 @@
     </p>
   </div>
   <h3 class="item-detail__title"><%= @item.name %></h3>
+  <% if check_liked(@item.id) %>
+  <%= button_to remove_liked_item_path(@item), form_class: 'item-detail__form' do %>
+  <%= image_tag 'ico_like.png', class: 'item-detail__form-ico', title: 'お気に入りを外す' %>
+  <% end %>
+  <% else %>
   <%= button_to like_item_path(@item), form_class: 'item-detail__form' do %>
   <%= image_tag 'ico_like.png', class: 'item-detail__form-ico', title: '商品をお気に入りに登録する' %>
   <% end %>
-  <span class="item-detail__txt">お気に入り登録(0人)</span>
+  <% end %>
+  <span class="item-detail__txt">お気に入り登録(<%= @item.likes.size %>人)</span>
+  <% if check_liked(@item.id) %>
+  <span class="item-detail__label">登録済み</span>
+  <% end %>
 </div>
 
 <!-- 店舗一覧 -->
@@ -48,3 +60,32 @@
 <% else %>
 <p class="item-shop__txt">取扱店舗はありません</p>
 <% end %>
+
+<!-- レビュー一覧 -->
+<div class="item-review">
+  <h3 class="item-review__heading">ユーザーレビュー<span>～ユーザーから投稿された製品のレビュー評価～</span></h3>
+  <div class="item-review__body">
+    <p class="item-review__txt">
+      この製品に投稿されたレビュー：<span><%= @item.reviews.size %></span>件
+    </p>
+    <% if @item.reviews.any? %>
+    <% @item.reviews.each do |review| %>
+    <div class="item-review__item">
+      <div class="item-review__item-upper flex">
+        <h4><span><%= review.user.name %></span>さん</h4>
+        <p class="datetime"><%= review.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+        <p class="rate flex"><span>満足度</span><%= get_star(review.rate) %></p>
+      </div>
+      <div class="item-review__item-lower">
+        <h4><%= review.title %></h4>
+        <p><%= review.body %></p>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <p>まだレビューはありません</p>
+    <% end %>
+    <hr class="item-review__line">
+    <%= link_to 'レビューを投稿する', new_review_path(@item), class: 'item-review__link' %>
+  </div>
+</div>

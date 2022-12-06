@@ -93,3 +93,6 @@ gem 'activeadmin'
 
 # generate dummy data
 gem 'faker'
+
+# use jquery
+gem 'jquery-rails'

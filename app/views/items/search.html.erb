@@ -1,0 +1,19 @@
+<%= render partial: 'shared/page_title', locals: { page_title: @search_word } %>
+
+<h2 class="basic-heading-blue"><%= @search_word %>の検索結果</h2>
+
+<ul class="item-list flex">
+  <% if @items.any? %>
+  <% @items.each do |item| %>
+  <%= link_to show_item_path(item), class: 'contents' do %>
+  <li class="item-list__item">
+    <%= image_tag 'img_item.jpg' %>
+    <h3 class="item-list__heading"><%= item.name %></h3>
+    <p class="item-list__txt"><%= truncate(item.description, length:25) %></p>
+  </li>
+  <% end %>
+  <% end %>
+  <% else %>
+  <p>検索結果はありません</p>
+  <% end %>
+</ul>

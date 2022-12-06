@@ -108,11 +108,19 @@
     width: fit-content;
     margin-left: auto;
   }
+  &__label {
+    background-color: #dfdfdf;
+    padding: 5px;
+    margin-left: auto;
+    display: block;
+    width: fit-content;
+    margin-top: 5px;
+  }
 }
 .item-shop {
   margin-top: 30px;
   border-collapse: collapse;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid $basic-dark-gray;
   &__title {
     background-color: #f2f2f2;
     margin-bottom: 10px;
@@ -133,20 +141,20 @@
     background-color: #e6e6e6;
     font-weight: normal;
     padding: 10px;
-    border-left: 1px solid #808080;
-    border-top: 1px solid #808080;
+    border-left: 1px solid $basic-dark-gray;
+    border-top: 1px solid $basic-dark-gray;
     &:first-child {
       width: 20%;
     }
     &:last-child {
-      border-right: 1px solid #808080;
+      border-right: 1px solid $basic-dark-gray;
     }
   }
   td {
     padding: 20px;
     text-align: center;
-    border-left: 1px solid #808080;
-    border-top: 1px solid #808080;
+    border-left: 1px solid $basic-dark-gray;
+    border-top: 1px solid $basic-dark-gray;
     &.price {
       color: #ff0000;
       font-weight: 700;
@@ -155,7 +163,7 @@
     }
     &:last-child {
       text-align: left;
-      border-right: 1px solid #808080;
+      border-right: 1px solid $basic-dark-gray;
       h3 {
         @include fs-16;
         color: #0099ff;
@@ -167,5 +175,136 @@
   }
   &__txt {
     @include fs-16;
+  }
+}
+.item-review {
+  margin-top: 30px;
+  border: 1px solid $basic-dark-gray;
+  border-radius: 5px;
+  &__heading {
+    background-color: #e4e6e9;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
+    @include fs-16;
+    padding: 10px;
+    span {
+      font-size: 0.87em;
+      color: #002c6e;
+      font-weight: normal;
+      margin-left: 10px;
+    }
+  }
+  &__body {
+    padding: 20px;
+  }
+  &__txt {
+    @include fs-13;
+    margin: 0;
+    span {
+      color: #ff8400;
+      font-size: 1.54em;
+      font-weight: 700;
+    }
+  }
+  &__item {
+    margin: 15px auto 0;
+    width: 70%;
+    &-upper {
+      @include fs-13;
+      align-items: center;
+      column-gap: 15px;
+      padding: 5px 10px;
+      border-radius: 10px 10px 0 0;
+      background-color: #e4e6e9;
+      h4 {
+        span {
+          color: #cc0000;
+        }
+      }
+      p {
+        &.datetime {
+        }
+        &.rate {
+          column-gap: 5px;
+          span {
+            font-weight: 700;
+          }
+          img {
+            &.ico {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+      }
+    }
+    &-lower {
+      @include fs-13;
+      padding: 0 10px;
+    }
+  }
+  &__link {
+    @include fs-13;
+    position: relative;
+    margin-top: 10px;
+    width: fit-content;
+    margin-left: auto;
+    padding-left: 20px;
+    &::before {
+      content: "";
+      background: url("ico_pencil.png") no-repeat;
+      background-size: contain;
+      display: inline-block;
+      width: 16px;
+      height: 19px;
+      position: absolute;
+      left: 0;
+      top: calc(50% - 19px / 2);
+    }
+  }
+}
+
+/* review form */
+.review-form {
+  margin-top: 30px;
+  &__table {
+    border-collapse: collapse;
+    th {
+      width: 25%;
+      background-color: $basic-gray;
+      @include fs-16;
+      padding: 15px;
+      border: 1px solid #e6e6e6;
+    }
+    td {
+      border: 1px solid #e6e6e6;
+      padding: 15px;
+    }
+    &-input,
+    &-textarea {
+      padding: 10px;
+      @include fs-14;
+      width: 100%;
+    }
+    &-input {
+      &--submit {
+        background-color: #f9549b;
+        border: none;
+        color: #fff;
+        margin-top: 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 10px;
+        width: 200px;
+        cursor: pointer;
+      }
+    }
+    &-textarea {
+      resize: none;
+    }
+    &-select {
+      padding: 10px;
+      @include fs-14;
+    }
   }
 }

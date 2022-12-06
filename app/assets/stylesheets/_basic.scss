@@ -10,11 +10,23 @@ body,
 html {
   margin: 0;
 }
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+option,
+span {
+  font-size: 1em;
+}
 a {
   text-decoration: none;
   color: #00d;
   display: block;
-  font-size: 1em;
   &:hover {
     color: #1e85e5;
     text-decoration: underline;
@@ -25,9 +37,6 @@ ul {
   padding-left: 0;
   margin: 0;
 }
-li {
-  font-size: 1em;
-}
 img {
   width: 100%;
   vertical-align: bottom;
@@ -35,9 +44,6 @@ img {
 }
 figure {
   margin: 0;
-}
-option {
-  font-size: 1em;
 }
 table {
   width: 100%;
@@ -55,6 +61,10 @@ table {
   width: min(95%, 1000px);
   margin: 0 auto;
 }
+
+/* basic color */
+$basic-gray: #f5f5f5;
+$basic-dark-gray: #808080;
 
 /* breakpoints */
 $breakpoints: (
@@ -166,14 +176,14 @@ $breakpoints: (
 .basic-heading {
   @include fs-18;
   font-weight: 700;
-  background-color: #f5f5f5;
+  background-color: $basic-gray;
   margin: 0;
   padding: 5px 10px;
 }
 .basic-heading-blue {
   @include fs-18;
   font-weight: 700;
-  background-color: #f5f5f5;
+  background-color: $basic-gray;
   margin: 0;
   padding: 5px 10px;
   border-left: 8px solid #001789;
@@ -181,7 +191,7 @@ $breakpoints: (
 .basic-heading-light-blue {
   @include fs-18;
   font-weight: 700;
-  background-color: #f5f5f5;
+  background-color: $basic-gray;
   margin: 0;
   padding: 5px 10px;
   border-left: 8px solid #0099ff;
@@ -245,6 +255,10 @@ $breakpoints: (
   color: #ff3333;
   text-align: center;
   margin-bottom: 10px;
+  ul {
+    @include fs-14;
+    font-weight: 700;
+  }
 }
 
 /* flash message */

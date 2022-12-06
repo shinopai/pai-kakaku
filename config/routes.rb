@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  # search
-  get '/search', to: 'items#search', as: :search_items
+  # search item
+  get '/search', to: 'items#search', as: :search
 
   # maker list page
   get '/makers', to: 'makers#index', as: :makers
@@ -34,4 +34,13 @@ Rails.application.routes.draw do
 
   # like item
   post '/items/:id/like', to: 'items#like_item', as: :like_item
+
+  # remove liked item
+  post '/items/:id/like/remove', to: 'items#remove_liked_item', as: :remove_liked_item
+
+  # new review form
+  get '/items/:id/review/new', to: 'reviews#new', as: :new_review
+
+  # review item
+  post '/items/:id/review', to: 'reviews#create', as: :review_item
 end

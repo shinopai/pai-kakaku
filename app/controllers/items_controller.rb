@@ -11,6 +11,16 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
 
     user.items << item
-    redirect_to request.referer
+    redirect_to request.referer, notice: 'お気に入りに追加しました'
+  end
+
+  def remove_liked_item
+    res = Like.where(item_id: params[:id]).find_by(user_id: current_user.id)
+    res.destroy
+
+    redirect_to request.referer, notice: 'お気に入りを解除しました'
+  end
+
+  def search
   end
 end

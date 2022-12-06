@@ -7,4 +7,6 @@ class User < ApplicationRecord
   # relation
   has_many :likes
   has_many :items, through: :likes
+  has_many :reviews
+  has_many :rates, through: :reviews, source: :item
 end
